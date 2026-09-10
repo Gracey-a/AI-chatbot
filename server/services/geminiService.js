@@ -27,6 +27,7 @@ const getGeminiReply = async (history, newMessage) => {
 
     return reply;
 } catch (error) {
+    console.error('Gemini API error:', error);
     if (error.message?.includes('UNAVAILABLE') || error.message?.includes('503')) {
         throw new Error('The AI is a bit busy right now. Please try again in a moment.');
     }
