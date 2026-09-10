@@ -9,23 +9,29 @@ const getGeminiReply = async (history, newMessage) => {
     }));
 
     contents.push({ role: 'user', parts: [{ text: newMessage }] });
-
-    const response = await ai.models.generateContent({
-        model: 'gemini-3.6-flash',
-        contents,
-        config: {
-            systemInstruction:
-                'You are a helpful, friendly AI assistant. Give clear, well-formatted answers.',
-        },
+    try {
+        const response = await ai.models.generateContent({
+            model: 'gemini-3.6-flash',
+            contents,
+            config: {
+                systemInstruction:
+                    'You are a helpful, friendly AI assistant. Give clear, well-formatted answers.',
+            },
     });
 
     const reply = response.text?.trim();
-
+    
     if (!reply) {
         throw new Error('Gemini returned an empty response.');
     }
 
     return reply;
+} catch (error) {
+    if (error.message?.includes('UNAVAILABLE') || error.message?.includes('503')) {
+        throw new Error('The AI is a bit busy right now. Please try again in a moment.');
+    }
+    throw new Error('Something went wrong while getting a response. Please try again.');
+}
 };
 
 module.exports = { getGeminiReply };
