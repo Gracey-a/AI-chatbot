@@ -2,8 +2,8 @@
 
 A full-stack AI chatbot built as my final capstone project for the Neocloud program. It's a general-purpose assistant (similar to ChatGPT) with user accounts, persistent chat history, and a clean, responsive interface with light/dark mode.
 
-**Live demo:** https://ai-chatbot-frontend-0vdn.onrender.com
-**Backend API:** https://ai-chatbot-cnrr.onrender.com
+**Live demo:** <https://ai-chatbot-frontend-0vdn.onrender.com>
+**Backend API:** <https://ai-chatbot-cnrr.onrender.com>
 
 > Note: both are hosted on Render's free tier, so the backend may take 30–60 seconds to "wake up" on the first request after a period of inactivity.
 
@@ -27,6 +27,7 @@ A full-stack AI chatbot built as my final capstone project for the Neocloud prog
 **Deployment:** Render (Web Service for backend, Static Site for frontend)
 
 ## Project Structure
+
 AI-chatbot/
 ├── client/ # React frontend
 │ └── src/
@@ -42,14 +43,15 @@ AI-chatbot/
 ├── routes/ # API endpoints
 └── services/ # Gemini API integration
 
-
 ## Running Locally
 
 ### Backend
+
 ```bash
 cd server
 npm install
 ```
+
 Create a `.env` file in `server/` with:
 
 PORT=5002
@@ -58,20 +60,24 @@ JWT_SECRET=your_random_secret
 GEMINI_API_KEY=your_gemini_api_key
 
 Then run:
+
 ```bash
 npm run dev
 ```
 
 ### Frontend
+
 ```bash
 cd client
 npm install
 ```
+
 Create a `.env` file in `client/` with:
 
-VITE_API_URL=http://localhost:5002/api
+VITE_API_URL=<http://localhost:5002/api>
 
 Then run:
+
 ```bash
 npm run dev
 ```
@@ -84,4 +90,4 @@ npm run dev
 
 ## Author
 
-Agho Ivie Gracious
+Agho Ivie Gracious.
