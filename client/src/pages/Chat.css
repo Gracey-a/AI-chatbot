@@ -336,6 +336,41 @@
     padding: 0;
 }
 
+.code-block-wrapper {
+    margin: 10px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.code-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px;
+    background: var(--bg-tertiary);
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.copy-btn {
+    padding: 5px 7px;
+    display: flex;
+    align-items: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: opacity 0.2s;
+}
+
+.copy-btn:hover {
+  opacity: 0.7;
+}
+
 .chat-input-bar {
     display: flex;
     gap: 10px;
