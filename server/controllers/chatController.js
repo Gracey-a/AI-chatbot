@@ -74,9 +74,27 @@ const getConversationById = async (req, res) => {
     res.json(conversation);
 };
 
+const deleteConversation = async (req, res) => {
+    try {
+        const conversation = await Conversation.findOneAndDelete({
+            _id: req.params.id,
+            user: req.user._id,
+        });
+        
+        if (!conversation) {
+            return res.status(404).json({ message: 'Conversation not found' });
+        }
+        
+        res.json({ message: 'Conversation deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     sendMessage,
     getConversations,
     getLatestConversation,
     getConversationById,
+    deleteConversation,
 };

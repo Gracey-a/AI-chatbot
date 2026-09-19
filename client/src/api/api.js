@@ -65,3 +65,13 @@ export const getConversationById = async (id) => {
     if (!res.ok) throw new Error(data.message || 'Failed to load conversation');
     return data;
 };
+
+export const deleteConversation = async (id) => {
+    const res = await fetch(`${BASE_URL}/chat/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${getToken()}` },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Failed to delete conversation');
+    return data;
+};

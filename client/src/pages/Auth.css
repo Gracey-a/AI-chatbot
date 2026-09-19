@@ -11,14 +11,43 @@
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 40px;
+    padding: 56px;
     width: 100%;
-    max-width: 380px;
+    max-width: 480px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    animation: authCardIn 0.45s ease-out;
+}
+
+.auth-terms-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+}
+
+.terms-confirmed {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.auth-terms-note a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+}
+
+@keyframes authCardIn {
+    from {
+        transform: translateY(16px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .auth-card h1 {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 4px;
     color: var(--text-primary);
@@ -41,7 +70,7 @@
 
 .auth-card input {
     width: 100%;
-    padding: 12px 14px;
+    padding: 14px 16px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 14px;
@@ -51,26 +80,39 @@
     transition: border-color 0.2s;
 }
 
+.auth-card input {
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
 .auth-card input:focus {
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
 .auth-card button {
     width: 100%;
-    margin-top: 24px;
-    padding: 12px;
+    margin-top: 28px;
+    padding: 14px;
     background: var(--accent);
     color: var(--accent-text);
     border: none;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, opacity 0.2s;
 }
 
+.auth-card button {
+    transition: opacity 0.2s, transform 0.1s;
+}
+
 .auth-card button:hover:not(:disabled) {
     opacity: 0.85;
+}
+
+.auth-card button:hover:not(:disabled) {
+    transform: scale(0.98);
 }
 
 .auth-card button:disabled {
