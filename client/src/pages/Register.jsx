@@ -16,10 +16,20 @@ function Register() {
     const navigate = useNavigate();
     
     useEffect(() => {
+        const savedDraft = localStorage.getItem('registerDraft');
+        if (savedDraft) {
+            const { name:savedName, email: savedEmail } = JSON.parse(savedDraft);
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setName(savedName || '');
+            setEmail(savedEmail || '')
+        }
         const accepted = localStorage.getItem('termsAccepted') === 'true';
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setTermsAccepted(accepted);
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('registerDraft', JSON.stringify({ name, email}));
+    }, [name, email]);
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +45,7 @@ function Register() {
         try {
             const userData = await registerUser(name, email, password);
             localStorage.removeItem('termsAccepted');
+            localStorage.removeItem('registerDraft');
             login(userData);
             navigate('/chat');
         } catch (err) {
