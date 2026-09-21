@@ -23,6 +23,19 @@
     align-items: center;
     gap: 20px;
 }
+.landing-theme-toggle {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.landing-theme-toggle:hover {
+    opacity: 0.7;
+}
 
 .landing-nav-links a {
     color: var(--text-secondary);

@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import './Landing.css';
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 function Landing() {
+    const { theme, toggleTheme } = useTheme();
     const revealRefs = useRef([]);
     
     useEffect(() => {
@@ -28,6 +30,13 @@ function Landing() {
         <nav className="landing-nav">
             <span className="landing-logo">Gigi</span>
             <div className="landing-nav-links">
+                <button
+                    className="landing-theme-toggle"
+                    onClick={toggleTheme}
+                    title="Toggle theme"
+                >
+                    {theme === 'light' ? '🌙' : '☀️'}
+                </button>
                 <Link to="/login">Log in</Link>
                 <Link to="/register" className="nav-cta">Get Started</Link>
             </div>
